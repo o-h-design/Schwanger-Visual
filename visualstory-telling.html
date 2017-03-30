@@ -1,0 +1,333 @@
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Prototype</title>
+
+<script src="JS/jquery-1.12.4.js"></script>
+<script src="JS/jquery-ui.js"></script>
+
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="css/style.css" />
+
+<link href="https://fonts.googleapis.com/css?family=Cookie|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+
+<script>
+
+function updateTween(currentTween, nextTween) {
+  console.log(currentTween, nextTween);
+  var tween = KUTE.fromTo('#bauchLinie-1',  // target shape
+     { path: currentTween }, // from shape
+     { path: nextTween }, // to shape
+     { // options
+    easing: 'easingCubicInOut',
+    yoyo: true, repeat: 1, duration: 500,
+    showMorphInfo: true,
+    morphIndex: 150
+     }
+   ).start();
+   //console.log("finished");
+}
+
+$( function() {
+ $( "#slider-vertical" ).slider({
+   orientation: "vertical",
+   range: "min",
+   min: 0,
+   max: 39,
+   value: 0,
+   step: 1,
+
+   slide: function( event, ui ) {
+     var currentValue = $( "#slider-vertical" ).slider( "option", "value" );
+     //console.log(currentValue);
+     var currentTweenNr = '#bauchLinie' + (currentValue - 40);
+     //console.log(currentTweenNr);
+     $( "#amount" ).val( 40 - ui.value );
+     $( ".animationContainer" ).attr( "data-animate", 40 - ui.value );
+     //test(40 - ui.value);
+     var nextTweenNr = '#bauchLinie-' + (40 -ui.value);
+     //console.log(nextTweenNr);
+     updateTween(currentTweenNr,nextTweenNr);
+   }
+ });
+ $( "#amount" ).val( $( "#slider-vertical" ).slider( "value" ) );
+} );
+
+$( document ).ready(function() {
+    $( "#amount" ).val( 1 );
+    $( ".animationContainer" ).attr( "data-animate", 1 );
+    $( "#slider-vertical" ).slider( "value", 40);
+});
+
+</script>
+
+</head>
+<body>
+  <div class="wrapper">
+
+    <header class="header">
+      <h1>Entwicklung der Mutter und des Kindes während der Schwangerschaft</h1>
+      <h2 class="middleTitle">
+        <span>
+          <input type="text" id="amount" size="2" readonly >
+          <label for="amount">Woche:</label>
+        </span>
+        <span>der Schwangerschaft</span>
+      </h2>
+    </header>
+
+    <main>
+
+      <section class="left">
+        <h3>Mutter</h3>
+
+        <section class="animationContainer" data-animate="0">
+
+          <section class="bauchContainer">
+
+            <svg id="Schwangere" data-name="Schwangere" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <title>Bauch</title>
+              <path id="Frau" d="M200.07,156.3l-82.7,95.92s-14.42,14.49-8.44,22.85c8.16,11.41,68.43,69.25,72.12,83.09s5.82,22.44,1.18,28.88-7.71,16.66-6.69,23.81c1.07,7.52,14.31,20.45,14.31,20.45s1,29.65,13.29,46C211.83,488.9,221.81,511,221.81,511l92.65.09L319.64,467l0-200.27S348,249.13,345.25,239.2c-3.6-13.24-2.84-19.26-17.27-28.9s-64.17-53.93-66.57-61.15,0-20.45,2-23.51,7.16,1,18.4,2c8.21.75,10.95-6.41,10.22-13.29-.15-1.41,4.05-3.42,4.09-5.11s-4.09-3.07-4.09-3.07,5.79-.52,4.09-3.07c-2-3.07-1-7.16-1-7.16s6.54.65,7.16-3.07-9.94-15.29-9.2-20.45c1-7.16,1-11.25-2-12.27h7.16s9.2-45-47-42.94c-46.67,1.7-59.29,26.58-55.21,44,3.74,15.92,8.13,68.63-5.11,74.63s-22.49,2-22.49,2,4.68,14.15,13.29,17.38C189.84,158.35,200.07,156.3,200.07,156.3ZM183.71,408.81c1.22-10.94,9.2-14.31,9.2-14.31s-3.3,4.49-5.11,15.33c-1,6.13,1,13.29,1,13.29A16.83,16.83,0,0,1,183.71,408.81ZM222,308.87c-7.25,28.87-20.91,59.05-20.91,59.05s-8.18-31.69-19.42-48c-7-10.21-36.49-36-36.64-43.56s51.79-50.49,51.79-50.49S229.25,280,222,308.87Z" fill=""/>
+              <path id="bauchLinie-1" d="M318.83,475s21.36-22.05,19-75c-2.15-48.27-15-115.66-18-133l-32.69,7.81,27.42,200.4Z" fill=""/>
+              <path id="bauchLinie-2" style="visibility:hidden" d="M318.83,475s23-22.36,20.64-75.3c-2.15-48.27-15.8-115.28-19.64-132.7l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-3" style="visibility:hidden" d="M318.83,475s24.64-22.66,22.28-75.61C339,351.12,324.54,284.49,319.83,267l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-4" style="visibility:hidden" d="M318.83,475s26.28-23,23.92-75.91C340.6,350.82,325.42,284.57,319.83,267l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-5" style="visibility:hidden" d="M318.83,475s27.92-23.27,25.56-76.22C342.24,350.51,326.3,284.65,319.83,267l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-6" style="visibility:hidden" d="M318.83,475s29.56-23.58,27.2-76.52c-2.15-48.27-18.85-113.75-26.2-131.48l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-7" style="visibility:hidden" d="M318.83,475s31.2-23.88,28.84-76.83C345.52,349.9,328.06,284.8,319.83,267l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-8" style="visibility:hidden" d="M318.83,475s32.83-24.18,30.48-77.13c-2.15-48.27-20.37-113-29.48-130.87l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-9" style="visibility:hidden" d="M318.83,475s34.47-24.49,32.12-77.43C348.8,349.3,329.81,285,319.83,267l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-10" style="visibility:hidden" d="M318.83,475s36.11-24.79,33.76-77.74C350.44,349,330.69,285,319.83,267l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-11" style="visibility:hidden" d="M318.83,475s37.75-25.1,35.4-78c-2.15-48.27-22.66-111.85-34.4-130l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-12" style="visibility:hidden" d="M318.83,475s39.39-25.4,37-78.35c-2.15-48.27-23.42-111.46-36-129.65l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-13" style="visibility:hidden" d="M318.83,475s41-25.71,38.68-78.65c-2.15-48.27-24.18-111.08-37.68-129.35l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-14" style="visibility:hidden" d="M318.83,475s42.67-26,40.32-79c-2.15-48.27-24.94-110.7-39.32-129l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-15" style="visibility:hidden" d="M318.83,475s44.31-26.31,42-79.26c-2.15-48.27-25.7-110.32-41-128.74l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-16" style="visibility:hidden" d="M318.83,475s46-26.62,43.59-79.56C360.27,347.17,336,285.5,319.83,267l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-17" style="visibility:hidden" d="M318.83,475s47.59-26.92,45.23-79.87c-2.15-48.27-27.22-109.55-44.23-128.13l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-18" style="visibility:hidden" d="M318.83,475s49.23-27.23,46.87-80.17c-2.15-48.27-28-109.17-45.87-127.83l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-19" style="visibility:hidden" d="M318.83,475s50.87-27.53,48.51-80.48c-2.15-48.27-28.75-108.79-47.51-127.52l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-20" style="visibility:hidden" d="M318.83,475s52.51-27.84,50.15-80.78c-2.15-48.27-29.51-108.41-49.15-127.22l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-21" style="visibility:hidden" d="M318.83,475s54.15-28.14,51.79-81.09c-2.15-48.27-30.27-108-50.79-126.91l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-22" style="visibility:hidden" d="M318.83,475s55.79-28.44,53.43-81.39c-2.15-48.27-31-107.64-52.43-126.61l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-23" style="visibility:hidden" d="M318.83,475s57.43-28.75,55.07-81.7C371.75,345,342.11,286,319.83,267l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-24" style="visibility:hidden" d="M318.83,475s59.07-29.05,56.71-82c-2.15-48.27-32.56-106.88-55.71-126l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-25" style="visibility:hidden" d="M318.83,475s60.71-29.36,58.35-82.3C375,344.43,343.86,286.2,319.83,267l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-26" style="visibility:hidden" d="M318.83,475s62.35-29.66,60-82.61c-2.15-48.27-34.08-106.12-59-125.39l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-27" style="visibility:hidden" d="M318.83,475s64-30,61.63-82.91c-2.15-48.27-34.84-105.74-60.63-125.09l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-28" style="visibility:hidden" d="M318.83,475s65.63-30.27,63.27-83.22C380,343.51,346.5,286.43,319.83,267l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-29" style="visibility:hidden" d="M318.83,475s67.27-30.57,64.91-83.52c-2.15-48.27-36.36-105-63.91-124.48l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-30" style="visibility:hidden" d="M318.83,475s68.91-30.88,66.55-83.83C383.23,342.9,348.25,286.58,319.83,267l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-31" style="visibility:hidden" d="M318.83,475s70.55-31.18,68.19-84.13C384.87,342.6,349.13,286.66,319.83,267l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-32" style="visibility:hidden" d="M318.83,475s72.19-31.49,69.83-84.43C386.51,342.3,350,286.74,319.83,267l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-33" style="visibility:hidden" d="M318.83,475s73.83-31.79,71.47-84.74C388.15,342,350.89,286.82,319.83,267l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-34" style="visibility:hidden" d="M318.83,475s75.47-32.1,73.11-85c-2.15-48.27-40.17-103.06-72.11-123l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-35" style="visibility:hidden" d="M318.83,475s77.11-32.4,74.75-85.35C391.43,341.38,352.65,287,319.83,267l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-36" style="visibility:hidden" d="M318.83,475s78.75-32.71,76.39-85.65C393.07,341.08,353.52,287,319.83,267l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-37" style="visibility:hidden" d="M318.83,475s80.39-33,78-86c-2.15-48.27-42.46-101.92-77-122l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-38" style="visibility:hidden" d="M318.83,475s82-33.31,79.67-86.26C396.35,340.47,355.28,287.2,319.83,267l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-39" style="visibility:hidden" d="M318.83,475s83.66-33.62,81.31-86.56c-2.15-48.27-44-101.15-80.31-121.44l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-40" style="visibility:hidden" d="M318.83,475s85.3-33.92,82.95-86.87C399.63,339.86,357,287.36,319.83,267l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie-41" style="visibility:hidden" d="M318.83,475s86.94-34.23,84.59-87.17c-2.15-48.27-45.5-100.39-83.59-120.83l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+              <path id="bauchLinie" style="visibility:hidden" d="M318.83,475s88.58-34.53,86.23-87.48c-2.15-48.27-46.26-100-85.23-120.52l-32.69,7.81,27.42,200.4Z" fill="#bcf781"/>
+            </svg>
+          </section>
+
+          <section class="infoContainer Mum">
+
+            <h4 class="ssw-Info ssw-1 ssw-2 ssw-3">Vor der Schwangerschaft:</h4>
+            <ul class="ss-zeichen infoList">
+              <li class="ssw-Info ssw-1 ssw-2">Normaler Zyklus der Frau</li>
+              <li class="ssw-Info ssw-3">Befruchtung.</li>
+            </ul>
+
+            <h4 class="ssw-Info ssw-4 ssw-5 ssw-6 ssw-7 ssw-8 ssw-9 ssw-10 ssw-11 ssw-12 ssw-13 ssw-14">Schwangerschaftszeichen:</h4>
+            <ul class="ss-zeichen infoList">
+              <li class="ssw-Info ssw-4 ssw-5">Brustspannen</li>
+              <li class="ssw-Info ssw-4 ssw-5 ssw-6 ssw-7 ssw-8 ssw-9 ssw-10 ssw-11 ssw-12 ssw-13 ssw-14">Übelkeit, Brechreiz</li>
+              <li class="ssw-Info ssw-12">Müdigkeit, Kreislaufstörung</li>
+            </ul>
+
+            <h4 class="ssw-Info ssw-3 ssw-4 ssw-5 ssw-6 ssw-7 ssw-8">Schwangerschaftstests:</h4>
+            <ul class="ss-zeichen infoList">
+              <li class="ssw-Info ssw-3 ssw-4 ssw-5 ssw-6 ssw-7 ssw-8">Schangerschaftstest im Blut positiv (Zuverlässigkeit grösser 95%)</li>
+              <li class="ssw-Info ssw-3 ssw-4 ssw-5 ssw-6 ssw-7 ssw-8">Schangerschaftstest im Urin positiv (Zuvelässigkeit grösser 80%)</li>
+            </ul>
+
+            <h4 class="ssw-Info ssw-15 ssw-16 ssw-17 ssw-18 ssw-19 ssw-20">Körper:</h4>
+            <ul class="ss-zeichen infoList">
+              <li class="ssw-Info ssw-15 ssw-16 ssw-17 ssw-18 ssw-19 ssw-20">Schwangere spürt Kindsbewegungen</li>
+            </ul>
+
+            <h4 class="ssw-Info ssw-10 ssw-11 ssw-12 ssw-19 ssw-20 ssw-21 ssw-22 ssw-24 ssw-25 ssw-26 ssw-27 ssw-28 ssw-29 ssw-30 ssw-31 ssw-32 ssw-34 ssw-35 ssw-36 ssw-37 ssw-37 ssw-38 ssw-39 ssw-40">Untersuchungen:</h4>
+            <ul class="ss-zeichen infoList">
+              <li class="ssw-Info ssw-10 ssw-11 ssw-12">1. Ultraschalluntersuch zur Bestätigung der Schwangerschaft und zur Bestimmung des Geburtstermin</li>
+              <li class="ssw-Info ssw-19 ssw-20 ssw-21 ssw-22 ">2. Ultraschalle Herz- und Organscreening</li>
+              <li class="ssw-Info ssw-29 ssw-30 ssw-31 ssw-32 ">3. Ultraschall zur Wachstumskontrolle und Bestimmung der Lage des Kindes im Bauch</li>
+              <li class="ssw-Info ssw-24 ssw-25 ssw-26 ssw-27 ssw-28 ">Test auf Schwangerschaftsdiabetes</li>
+              <li class="ssw-Info ssw-34 ssw-35 ssw-36 ssw-37 ">Der Kopf des Baby sollte nun nach unten zeigen</li>
+              <li class="ssw-Info ssw-37 ssw-38 ssw-39 ssw-40 ">Funktion der Plazenta wird überprüft</li>
+            </ul>
+
+            <h4 class="ssw-Info ssw-3 ssw-4 ssw-5 ssw-6 ssw-7 ssw-8 ssw-9 ssw-10 ssw-11 ssw-12 ssw-13">1. Trimenon – Phase der Ambivalenz</h4>
+            <ul class="ss-zeichen infoList">
+              <li class="ssw-Info ssw-3 ssw-4 ssw-5 ssw-6 ssw-7 ssw-8 ssw-9 ssw-10 ssw-11 ssw-12 ssw-13">Stimmungsschwankungen</li>
+              <li class="ssw-Info ssw-3 ssw-4 ssw-5 ssw-6 ssw-7 ssw-8 ssw-9 ssw-10 ssw-11 ssw-12 ssw-13">wiederstreitende Gefühl</li>
+            </ul>
+
+            <h4 class="ssw-Info ssw-14 ssw-15 ssw-16 ssw-17 ssw-18 ssw-19 ssw-20 ssw-21 ssw-22 ssw-23 ssw-24 ssw-25 ssw-26">2. Trimenon – Wendung der Schwangeren nach Innen</h4>
+            <ul class="ss-zeichen infoList">
+              <li class="ssw-Info ssw-14 ssw-15 ssw-16 ssw-17 ssw-18 ssw-19 ssw-20 ssw-21 ssw-22 ssw-23 ssw-24 ssw-25 ssw-26">Entstehung Familie (beim ersten Kind)</li>
+              <li class="ssw-Info ssw-14 ssw-15 ssw-16 ssw-17 ssw-18 ssw-19 ssw-20 ssw-21 ssw-22 ssw-23 ssw-24 ssw-25 ssw-26">Kinder wird "selbstständig"</li>
+              <li class="ssw-Info ssw-14 ssw-15 ssw-16 ssw-17 ssw-18 ssw-19 ssw-20 ssw-21 ssw-22 ssw-23 ssw-24 ssw-25 ssw-26">Ängste wegen Untersuchungen (Pränataldiagnostik)</li>
+            </ul>
+
+            <h4 class="ssw-Info ssw-27 ssw-28 ssw-29 ssw-30 ssw-31 ssw-32 ssw-33 ssw-34 ssw-35 ssw-36 ssw-37 ssw-38 ssw-39 ssw-40">3. Trimenon – Vorbeitung auf die Geburt</h4>
+            <ul class="ss-zeichen infoList">
+              <li class="ssw-Info ssw-27 ssw-28 ssw-29 ssw-30 ssw-31 ssw-32 ssw-33 ssw-34 ssw-35 ssw-36 ssw-37 ssw-38 ssw-39 ssw-40">Nestbautendenzen</li>
+              <li class="ssw-Info ssw-27 ssw-28 ssw-29 ssw-30 ssw-31 ssw-32 ssw-33 ssw-34 ssw-35 ssw-36 ssw-37 ssw-38 ssw-39 ssw-40">Ungeduld (Beschwerlich)</li>
+            </ul>
+
+            <h4 class="ssw-Info ssw-22">Tipps:</h4>
+            <ul class="ss-zeichen infoList">
+              <li class="ssw-Info ssw-22">Beim Autofahren die Gurte nicht über, sondern unter- und oberhalb des Bauches durchführen</li>
+            </ul>
+
+          </section>
+        </section>
+
+      </section>
+
+      <section class="middle">
+        <div class="middleWrapper">
+
+
+          <section class="sliderContainer">
+            <div id="slider-vertical" style="height: 60vh;"></div>
+          </section>
+        </div>
+
+      </section>
+      <section class="right">
+        <h3>Baby</h3>
+
+        <section class="animationContainer fruits" data-animate="0">
+
+          <section class="fruitContainer">
+            <img class="fruit fruit-0" src="Images/Fruits/Fruit-4.svg" />
+            <img class="fruit fruit-1" src="Images/Fruits/Fruit-4.svg" />
+            <img class="fruit fruit-2" src="Images/Fruits/Fruit-4.svg" />
+            <img class="fruit fruit-3" src="Images/Fruits/Fruit-4.svg" />
+            <img class="fruit fruit-4" src="Images/Fruits/Fruit-4.svg" />
+            <img class="fruit fruit-5" src="Images/Fruits/Fruit-5.svg" />
+            <img class="fruit fruit-6" src="Images/Fruits/Fruit-6.svg" />
+            <img class="fruit fruit-7" src="Images/Fruits/Fruit-7.svg" />
+            <img class="fruit fruit-8" src="Images/Fruits/Fruit-8.svg" />
+            <img class="fruit fruit-9" src="Images/Fruits/Fruit-9.svg" />
+            <img class="fruit fruit-10" src="Images/Fruits/Fruit-10.svg" />
+            <img class="fruit fruit-11" src="Images/Fruits/Fruit-11.svg" />
+            <img class="fruit fruit-12" src="Images/Fruits/Fruit-12.svg" />
+            <img class="fruit fruit-13" src="Images/Fruits/Fruit-13.svg" />
+            <img class="fruit fruit-14" src="Images/Fruits/Fruit-14.svg" />
+            <img class="fruit fruit-15" src="Images/Fruits/Fruit-15.svg" />
+            <img class="fruit fruit-16" src="Images/Fruits/Fruit-16.svg" />
+            <img class="fruit fruit-17" src="Images/Fruits/Fruit-17.svg" />
+            <img class="fruit fruit-18" src="Images/Fruits/Fruit-18.svg" />
+            <img class="fruit fruit-19" src="Images/Fruits/Fruit-19.svg" />
+            <img class="fruit fruit-20" src="Images/Fruits/Fruit-20.svg" />
+            <img class="fruit fruit-21" src="Images/Fruits/Fruit-21.svg" />
+            <img class="fruit fruit-22" src="Images/Fruits/Fruit-22.svg" />
+            <img class="fruit fruit-23" src="Images/Fruits/Fruit-23.svg" />
+            <img class="fruit fruit-24" src="Images/Fruits/Fruit-24.svg" />
+            <img class="fruit fruit-25" src="Images/Fruits/Fruit-25.svg" />
+            <img class="fruit fruit-26" src="Images/Fruits/Fruit-26.svg" />
+            <img class="fruit fruit-27" src="Images/Fruits/Fruit-27.svg" />
+            <img class="fruit fruit-28" src="Images/Fruits/Fruit-28.svg" />
+            <img class="fruit fruit-29" src="Images/Fruits/Fruit-29.svg" />
+            <img class="fruit fruit-30" src="Images/Fruits/Fruit-30.svg" />
+            <img class="fruit fruit-31" src="Images/Fruits/Fruit-31.svg" />
+            <img class="fruit fruit-32" src="Images/Fruits/Fruit-32.svg" />
+            <img class="fruit fruit-33" src="Images/Fruits/Fruit-33.svg" />
+            <img class="fruit fruit-34" src="Images/Fruits/Fruit-34.svg" />
+            <img class="fruit fruit-35" src="Images/Fruits/Fruit-35.svg" />
+            <img class="fruit fruit-36" src="Images/Fruits/Fruit-36.svg" />
+            <img class="fruit fruit-37" src="Images/Fruits/Fruit-37.svg" />
+            <img class="fruit fruit-38" src="Images/Fruits/Fruit-38.svg" />
+            <img class="fruit fruit-39" src="Images/Fruits/Fruit-39.svg" />
+            <img class="fruit fruit-40" src="Images/Fruits/Fruit-40.svg" />
+          </section>
+
+          <section class="infoContainer Child">
+
+            <h4 class="ssw-Info ssw-1 ssw-2 ssw-3 ssw-4">Vor der Schwangerschaft:</h4>
+            <ul class="ss-zeichen infoList">
+              <li class="ssw-Info ssw-1 ssw-2">Das Baby existiert erst ab der dritten Woche</li>
+              <li class="ssw-Info ssw-3">Die befruchtete Eizelle wandert durch den Eileiter zur Gebärmutter und wird grösser</li>
+              <li class="ssw-Info ssw-4">Einnistung der Blastozyste in die Gebärmutterschleimhaut. Ab diesem Zeitpunkt spricht man von einem Embyro.</li>
+            </ul>
+
+            <h4 class="ssw-Info ssw-5 ssw-6 ssw-7 ssw-8 ssw-9 ssw-10 ssw-11 ssw-15 ssw-16 ssw-17 ssw-18 ssw-19 ssw-20 ssw-21 ssw-22 ssw-23 ssw-24 ssw-25 ssw-26 ssw-27 ssw-28 ssw-29 ssw-30 ssw-31 ssw-32 ssw-33 ssw-34 ssw-35 ssw-36 ssw-37 ssw-38">Entwicklung:</h4>
+            <ul class="ss-zeichen infoList">
+              <li class="ssw-Info ssw-5">Der Embyro ist ein kleiner Zellhaufen und hat bereits jetzt eine einfache Herzanlange und das Kapillarsystem</li>
+              <li class="ssw-Info ssw-6">Die ersten Herzmuskelkontraktionoen sind sonografisch nachweisbar</li>
+              <li class="ssw-Info ssw-7">Der Kopf mit Gesicht wächst überproportional</li>
+              <li class="ssw-Info ssw-8">Ausbildung Fingerstrahlen</li>
+              <li class="ssw-Info ssw-8">Herz wird in vier Räume aufgeteilt</li>
+              <li class="ssw-Info ssw-9">Oberschenkelknochen als Anfang der Verknöcherung</li>
+              <li class="ssw-Info ssw-9">Der Embryo wird ab nun als Fötus bezeichnet</li>
+              <li class="ssw-Info ssw-10 ssw-11">Die Hände haben noch Hautlappen zwischen den Finger</li>
+              <li class="ssw-Info ssw-15 ssw-16 ssw-17 ssw-18">Phase schnelles Wachstum</li>
+              <li class="ssw-Info ssw-15 ssw-16 ssw-17 ssw-18">Bewegungen im Ultraschall erkennbar</li>
+              <li class="ssw-Info ssw-15 ssw-16 ssw-17 ssw-18">Anordung Haare auf Kopfhaut</li>
+              <li class="ssw-Info ssw-15 ssw-16 ssw-17 ssw-18">Augen bewegen sich nach vorne und die Ohren zur Seite des Kopfes</li>
+              <li class="ssw-Info ssw-15 ssw-16 ssw-17 ssw-18">Herz bewegt sich an definitive Position</li>
+              <li class="ssw-Info ssw-15 ssw-16 ssw-17 ssw-18">Die Lungenbläschen entfalten sich</li>
+              <li class="ssw-Info ssw-16">Lanugohaare bedecken den Fötus um vor dem Fruchtwasser schützende Käseschmiere festzuhalten/li>
+              <li class="ssw-Info ssw-19 ssw-20 ssw-21 ssw-22 ssw-23">Käseschmiere als Schutz für Haut</li>
+              <li class="ssw-Info ssw-19 ssw-20 ssw-21 ssw-22 ssw-23">Der Uterus wird angelegt</li>
+              <li class="ssw-Info ssw-23 ssw-24 ssw-25 ssw-26 ssw-27">Erhöhte Gewichtswachstum</li>
+              <li class="ssw-Info ssw-23 ssw-24 ssw-25 ssw-26 ssw-27">Die Fingernägel entstehen</li>
+              <li class="ssw-Info ssw-28 ssw-29">Die Lanugohaare verschwinden allmählich wieder</li>
+              <li class="ssw-Info ssw-30 ssw-31 ssw-32 ssw-33 ssw-34">Weisses Fettgewebe nimmt zu</li>
+              <li class="ssw-Info ssw-33 ssw-34">Kind fast fertig entwickelt</li>
+              <li class="ssw-Info ssw-33 ssw-34">Die Lungenreifung wird in der 35. Woche abgeschlossen</li>
+              <li class="ssw-Info ssw-35 ssw-36 ssw-37 ssw-38">Fettzunahme von 14g pro Tag</li>
+            </ul>
+
+            <h4 class="ssw-Info ssw-13 ss-14 ssw-30 ssw-31 ssw-32 ssw-33 ssw-34 ssw-35 ssw-36 ssw-37 ssw-38">Verhalten:</h4>
+            <ul class="ss-zeichen infoList">
+              <li class="ssw-Info ssw-13 ss-14">Der Fötus kann am Daumen lutschen</li>
+              <li class="ssw-Info ssw-30 ssw-31 ssw-32 ssw-33 ssw-34">Der Lichtreflex der Pupillen kann ausgelöst werden</li>
+              <li class="ssw-Info ssw-35 ssw-36 ssw-37 ssw-38">Der Fötus kann zugreifen und wendet sich Lichtquelle zu</li>
+            </ul>
+
+            <h4 class="ssw-Info ssw-12 ssw-38 ssw-39 ssw-40">Geburt:</h4>
+            <ul class="ss-zeichen infoList">
+              <li class="ssw-Info ssw-12">Ab der zwölften Woche sinkt das Risiko einer Fehlgeburt massiv</li>
+              <li class="ssw-Info ssw-38">Ab jetzt ist es keine Frühgeburt mehr</li>
+              <li class="ssw-Info ssw-40"><strong>Errechneter Geburstermin</strong></li>
+              <li class="ssw-Info ssw-38 ssw-39 ssw-40">nur 4% werden am festgelegten Termin geboren</li>
+              <li class="ssw-Info ssw-40">44% werden nach der 40. SS-Woche geboren</li>
+              <li class="ssw-Info ssw-40">Ab Woche 42 spricht man von Übertragung</li>
+            </ul>
+          </section>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Quellen: «Die Hebamme» <br>
+        http://www.babycenter.de/bildergalerie-wie-gross-ist-ihr-baby-jetzt <br>
+        https://www.swissmom.ch/schwangerschaft/medizinisches/komplikationen/medschwmutterdiabetesss/ <br>
+      </p>
+    </footer>
+  </div>
+  <script src="JS/kute.js-master/kute.js"></script>
+  <script src="JS/kute.js-master/kute-svg.js"></script>
+  <script src="JS/kute.js-master/kute-jquery.js"></script>
+  <script src="JS/kute.js-master/kute-css.js"></script>
+  <script src="JS/kute.js-master/kute-text.js"></script>
+  <script src="JS/kute.js-master/kute-attr.js"></script>
+<body>
