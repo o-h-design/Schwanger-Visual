@@ -325,6 +325,25 @@ main section.middle {
 .animationContainer[data-animate='40'] .fruit-40 {
   display: block;
 }
+/* Zusatz Info Baby */
+.fruit {
+  position: relative;
+}
+.fruit:hover .babyInfo {
+  opacity: 1;
+}
+.babyInfo {
+  position: absolute;
+  opacity: 0.0;
+  transition: all 500ms ease;
+  top: 50%;
+  font-weight: 600;
+}
+.babyInfo span {
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+}
 /* Animation Infos */
 .animationContainer .ssw-Info {
   font-size: 0rem;

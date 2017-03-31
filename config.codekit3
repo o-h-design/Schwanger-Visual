@@ -1258,6 +1258,12 @@
 		"plM": 3758088159,
 		"prP": 0
 		},
+	"\/index.html": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/index.html",
+		"oF": 0
+		},
 	"\/JS\/jquery-1.12.4.js": {
 		"ft": 64,
 		"mi": 1,
@@ -1809,12 +1815,6 @@
 		"pME": 1,
 		"rFN": 0,
 		"uCM": 0
-		},
-	"\/visualstory-telling.html": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/visualstory-telling.html",
-		"oF": 0
 		}
 	},
 "hooks": [
