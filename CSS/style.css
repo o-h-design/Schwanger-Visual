@@ -281,6 +281,7 @@ main section.middle {
 .animationContainer .fruit {
   display: none;
 }
+.animationContainer[data-animate='0'] .fruit-0,
 .animationContainer[data-animate='1'] .fruit-1,
 .animationContainer[data-animate='2'] .fruit-2,
 .animationContainer[data-animate='3'] .fruit-3,
