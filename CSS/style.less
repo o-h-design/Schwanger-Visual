@@ -124,6 +124,8 @@ footer {
 		color: #737373;
 		text-align: center;
 		font-size: 0.7rem;
+		width: 60vw;
+		margin: auto;
 	}
 }
 
@@ -269,25 +271,48 @@ main {
 	}
 }
 
-/* Zusatz Info Baby */
-
 .fruit {
   position: relative;
+	width: 100%;
   &:hover .babyInfo {
 		opacity: 1;
 	}
+	img {
+		width: 100%;
+		height: auto;
+		transition: all 500ms ease;
+	}
+	&.small-10:hover img {
+		transform: scale(10);
+	}
+	&.small-20:hover img {
+		transform: scale(20);
+	}
+	&.small-50:hover img {
+		transform: scale(50);
+	}
+	&.small-100:hover img {
+		transform: scale(100);
+	}
 }
+
+/* Zusatz Info Baby */
 
 .babyInfo {
   position: absolute;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
   opacity: 0.0;
   transition: all 500ms ease;
-	top: 50%;
-	font-weight: 600;
+	top: -10px;
+	font-size: 1rem;
+	display: flex;
+	justify-content: center;
 	span {
-		width: 100%;
 		text-align: center;
-		display: inline-block;
+		padding: 0.2rem;
 	}
 }
 

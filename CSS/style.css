@@ -196,6 +196,8 @@ footer p {
   color: #737373;
   text-align: center;
   font-size: 0.7rem;
+  width: 60vw;
+  margin: auto;
 }
 main {
   height: 80vh;
@@ -326,24 +328,47 @@ main section.middle {
 .animationContainer[data-animate='40'] .fruit-40 {
   display: block;
 }
-/* Zusatz Info Baby */
 .fruit {
   position: relative;
+  width: 100%;
 }
 .fruit:hover .babyInfo {
   opacity: 1;
 }
+.fruit img {
+  width: 100%;
+  height: auto;
+  transition: all 500ms ease;
+}
+.fruit.small-10:hover img {
+  transform: scale(10);
+}
+.fruit.small-20:hover img {
+  transform: scale(20);
+}
+.fruit.small-50:hover img {
+  transform: scale(50);
+}
+.fruit.small-100:hover img {
+  transform: scale(100);
+}
+/* Zusatz Info Baby */
 .babyInfo {
   position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
   opacity: 0.0;
   transition: all 500ms ease;
-  top: 50%;
-  font-weight: 600;
+  top: -10px;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
 }
 .babyInfo span {
-  width: 100%;
   text-align: center;
-  display: inline-block;
+  padding: 0.2rem;
 }
 /* Animation Infos */
 .animationContainer .ssw-Info {

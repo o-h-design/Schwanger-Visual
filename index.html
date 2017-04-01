@@ -58,6 +58,7 @@ $( document ).ready(function() {
     $( "#amount" ).val( 1 );
     $( ".animationContainer" ).attr( "data-animate", 1 );
     $( "#slider-vertical" ).slider( "value", 40);
+    $('.ui-slider-handle').focus();
 });
 
 </script>
@@ -200,7 +201,6 @@ $( document ).ready(function() {
       <section class="middle">
         <div class="middleWrapper">
 
-
           <section class="sliderContainer">
             <div id="slider-vertical" style="height: 60vh;"></div>
           </section>
@@ -245,7 +245,7 @@ $( document ).ready(function() {
               </div>
               <img  src="Images/Fruits/Fruit-4.svg" />
             </div>
-            <div class="fruit fruit-4">
+            <div class="fruit fruit-4 small-100">
               <div class="babyInfo">
                 <span class="babyFruit">Mohnsamen</span>
                 <span class="babyLength">2mm</span>
@@ -253,7 +253,7 @@ $( document ).ready(function() {
               </div>
               <img  src="Images/Fruits/Fruit-4.svg" />
             </div>
-            <div class="fruit fruit-5">
+            <div class="fruit fruit-5 small-100">
               <div class="babyInfo">
                 <span class="babyFruit">Sesamsamen</span>
                 <span class="babyLength">3mm*</span>
@@ -261,7 +261,7 @@ $( document ).ready(function() {
               </div>
               <img  src="Images/Fruits/Fruit-5.svg" />
             </div>
-            <div class="fruit fruit-6">
+            <div class="fruit fruit-6 small-100">
               <div class="babyInfo">
                 <span class="babyFruit">Linse</span>
                 <span class="babyLength">5mm*</span>
@@ -269,7 +269,7 @@ $( document ).ready(function() {
               </div>
               <img  src="Images/Fruits/Fruit-6.svg" />
             </div>
-            <div class="fruit fruit-7">
+            <div class="fruit fruit-7 small-10">
               <div class="babyInfo">
                 <span class="babyFruit">Blaubeere</span>
                 <span class="babyLength">120mm*</span>
@@ -277,15 +277,15 @@ $( document ).ready(function() {
               </div>
               <img  src="Images/Fruits/Fruit-7.svg" />
             </div>
-            <div class="fruit fruit-8">
+            <div class="fruit fruit-8 small-10">
               <div class="babyInfo">
-                <span class="babyFruit">Kleiner Kürbis</span>
+                <span class="babyFruit">Kidneybohne</span>
                 <span class="babyLength">160mm*</span>
                 <span class="babyWeight">unter 1g</span>
               </div>
               <img  src="Images/Fruits/Fruit-8.svg" />
             </div>
-            <div class="fruit fruit-9">
+            <div class="fruit fruit-9 small-10">
               <div class="babyInfo">
                 <span class="babyFruit">Weintraube</span>
                 <span class="babyLength">230mm*</span>
@@ -325,7 +325,6 @@ $( document ).ready(function() {
               </div>
               <img  src="Images/Fruits/Fruit-13.svg" />
             </div>
-            <img class="fruit fruit-14" src="Images/Fruits/Fruit-14.svg" />
             <div class="fruit fruit-14">
               <div class="babyInfo">
                 <span class="babyFruit">Zitrone</span>
@@ -334,7 +333,6 @@ $( document ).ready(function() {
               </div>
               <img  src="Images/Fruits/Fruit-14.svg" />
             </div>
-            <img class="fruit fruit-15" src="Images/Fruits/Fruit-15.svg" />
             <div class="fruit fruit-15">
               <div class="babyInfo">
                 <span class="babyFruit">Kleiner Kürbis</span>
@@ -604,10 +602,10 @@ $( document ).ready(function() {
 
     <footer>
       <p>
-        Quellen: «Die Hebamme» <br>
-        http://www.babycenter.de/bildergalerie-wie-gross-ist-ihr-baby-jetzt <br>
-        https://www.swissmom.ch/schwangerschaft/medizinisches/komplikationen/medschwmutterdiabetesss/ <br>
         * Messung Länge: Kopf bis Po ** Messung Länge: Kopf bis Fuss<br>
+        <strong>Quellen: </strong> «Hebammenkunde» von Andrea Stiefel (ISBN: 9783830454939),
+        http://www.babycenter.de/bildergalerie-wie-gross-ist-ihr-baby-jetzt,
+        https://www.swissmom.ch/schwangerschaft/medizinisches/komplikationen/medschwmutterdiabetesss/
       </p>
     </footer>
   </div>
